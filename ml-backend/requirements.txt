@@ -1,0 +1,8 @@
+flask
+flask-cors
+yfinance
+numpy
+pandas
+torch --index-url https://download.pytorch.org/whl/cpu
+scikit-learn
+gunicorn
