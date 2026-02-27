@@ -6,8 +6,8 @@ import {
 } from "recharts";
 
 const API       = "/api";
-const ML_API    = "http://127.0.0.1:5001/api";
-const AGENT_API = "http://127.0.0.1:5002/agent";
+const ML_API    = "https://ml-backend-lsxr.onrender.com";
+const AGENT_API = "https://backend-2hda.onrender.com";
 
 /* ── GLOBAL STYLES ── */
 const GlobalStyles = () => (
