@@ -5,6 +5,7 @@ import {
   ResponsiveContainer, ReferenceLine
 } from "recharts";
 
+const timeoutId = setTimeout(() => controller.abort(), 15000);
 const API = process.env.REACT_APP_API_URL + "/api";
 const ML_API    = "https://ml-backend-lsxr.onrender.com";
 const AGENT_API = "https://backend-2hda.onrender.com";
