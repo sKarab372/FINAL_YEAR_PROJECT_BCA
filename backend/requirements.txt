@@ -2,4 +2,5 @@ flask
 flask-cors
 flask-caching
 yfinance
-gunicorn
+requests
+python-dotenv
