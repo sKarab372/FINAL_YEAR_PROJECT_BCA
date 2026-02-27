@@ -5,7 +5,7 @@ import {
   ResponsiveContainer, ReferenceLine
 } from "recharts";
 
-const API = process.env.REACT_APP_API_URL;
+const API = process.env.REACT_APP_API_URL + "/api";
 const ML_API    = "https://ml-backend-lsxr.onrender.com";
 const AGENT_API = "https://backend-2hda.onrender.com";
 
