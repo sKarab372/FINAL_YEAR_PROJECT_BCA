@@ -5,7 +5,7 @@ import {
   ResponsiveContainer, ReferenceLine
 } from "recharts";
 
-const API       = "/api";
+const API       = "https://final-year-project-bca.vercel.app/";
 const ML_API    = "https://ml-backend-lsxr.onrender.com";
 const AGENT_API = "https://backend-2hda.onrender.com";
 
