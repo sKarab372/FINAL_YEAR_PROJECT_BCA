@@ -279,7 +279,13 @@ def compare():
 
 
 # ── ROUTE 3: Health ───────────────────────────────────────────────
-@app.route("/agent/health")
+# Change this in server.py
+@app.route("/api/health")
+def health():
+    return jsonify({
+        "status": "ok",
+        "service": "quantdesk-api"
+    })
 def health():
     return jsonify({
         "status":     "ok",
