@@ -199,9 +199,13 @@ def detail(symbol):
         return jsonify({})
 
 # ---------------- HEALTH ----------------
+# Change this in server.py
 @app.route("/api/health")
 def health():
-    return jsonify({"status":"ok"})
+    return jsonify({
+        "status": "ok",
+        "service": "quantdesk-api"
+    })
 
 # ---------------- CACHE CLEAR ----------------
 @app.route("/api/cache/clear",methods=["POST"])
