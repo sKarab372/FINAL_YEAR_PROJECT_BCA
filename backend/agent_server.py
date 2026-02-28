@@ -3,6 +3,8 @@ from flask_cors import CORS
 from pathlib import Path
 import yfinance as yf
 import requests
+import threading
+import time
 import os
 from dotenv import load_dotenv
 
@@ -10,11 +12,25 @@ from dotenv import load_dotenv
 load_dotenv(Path(__file__).parent.parent / ".env")
 
 app = Flask(__name__)
-CORS(app, origins=[
-    "http://localhost:3000",
-    "https://quantdesk-test.vercel.app",  # your actual Vercel URL
-    "https://*.vercel.app"
-])
+CORS(app, origins=["*"])
+
+# ── Keep-alive pinger ─────────────────────────────────────────────
+def keep_alive():
+    self_url = os.getenv("RENDER_EXTERNAL_URL")
+    if not self_url:
+        print("[keep-alive] RENDER_EXTERNAL_URL not set — skipping")
+        return
+    ping_url = f"{self_url}/agent/health"
+    print(f"[keep-alive] Pinger started → {ping_url} every 10min")
+    while True:
+        time.sleep(600)
+        try:
+            resp = requests.get(ping_url, timeout=10)
+            print(f"[keep-alive] ✅ Ping OK ({resp.status_code})")
+        except Exception as e:
+            print(f"[keep-alive] ⚠ Ping failed: {e}")
+
+threading.Thread(target=keep_alive, daemon=True).start()
 
 ANTHROPIC_KEY = os.getenv("ANTHROPIC_API_KEY")
 CLAUDE_MODEL  = "claude-sonnet-4-20250514"
